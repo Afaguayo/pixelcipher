@@ -1,0 +1,25 @@
+[package]
+name = "pixelcipher"
+version = "0.1.0"
+edition = "2021"
+authors = ["Emmanuel Penafiel"]
+description = "Embeds and extracts secret messages in PNG image pixel data (LSB steganography), with optional AES-256-GCM encryption."
+license = "MIT"
+repository = "https://github.com/Afaguayo/pixelcipher"
+
+[[bin]]
+name = "pixelcipher"
+path = "src/main.rs"
+
+[dependencies]
+aes-gcm = "0.10"
+clap = { version = "4.5", features = ["derive"] }
+image = { version = "0.25", default-features = false, features = ["png"] }
+pbkdf2 = { version = "0.12", default-features = false, features = ["hmac"] }
+rand = "0.8"
+sha2 = "0.10"
+thiserror = "1.0"
+
+[profile.release]
+opt-level = 3
+lto = true
